@@ -1,6 +1,35 @@
 import React from 'react';
 
 class App extends React.Component {
+  state = {
+    userImage: [
+      'https://avatars.githubusercontent.com/u/91036593?v=4'
+    ],
+    userName: [
+      'Allison Stewart'
+    ],
+    userBio: [
+      'Full stack web dev student'
+    ],
+    userRepos: [
+      34
+    ],
+    userFollowers: [
+      2
+    ],
+    followerImages: [
+      'https://avatars.githubusercontent.com/u/3699469?v=4',
+      'https://avatars.githubusercontent.com/u/3699469?v=4',
+      'https://avatars.githubusercontent.com/u/3699469?v=4',
+      'https://avatars.githubusercontent.com/u/3699469?v=4',
+    ],
+    followerHandles: [
+      'ChristOscar',
+      'ChristOscar',
+      'ChristOscar',
+      'ChristOscar',
+    ]
+  }
   render() {
     return(
     <div>
@@ -12,23 +41,20 @@ class App extends React.Component {
       <div>
         {/*this will be for the Follower.js FROM USER API*/}
         <img src='https://avatars.githubusercontent.com/u/91036593?v=4'/>
-        <p>Name: Allison Stewart</p>
-        <p>Bio: Full stack web dev student</p>
-        <p>Total Repos: 34</p>
-        <p>Total Followers: 2</p>
+        <p>Name: {this.state.userName}</p>
+        <p>Bio: {this.state.userBio}</p>
+        <p>Total Repos: {this.state.userRepos}</p>
+        <p>Total Followers: {this.state.userFollowers}</p>
       </div>
       
       <div>
       {/*this will be for the FollowerList.js FROM FOLLOWER API*/}
       <h3>Followers:</h3>
-      <img width='150' src='https://avatars.githubusercontent.com/u/3699469?v=4'/>
-      <p>Handle: ChristOscar</p>
-      <img width='150' src='https://avatars.githubusercontent.com/u/3699469?v=4'/>
-      <p>Handle: ChristOscar</p>
-      <img width='150' src='https://avatars.githubusercontent.com/u/3699469?v=4'/>
-      <p>Handle: ChristOscar</p>
-      <img width='150' src='https://avatars.githubusercontent.com/u/3699469?v=4'/>
-      <p>Handle: ChristOscar</p>
+      {
+        this.state.followerImages.map(image=> {
+          return <img width='150' src={image}/> 
+        })
+      }
       </div>
 
     </div>
