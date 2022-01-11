@@ -1,4 +1,6 @@
 import React from 'react';
+import Follower from './components/Follower'
+import FollowerList from './components/FollowerList'
 
 class App extends React.Component {
   state = {
@@ -38,24 +40,8 @@ class App extends React.Component {
         <input placeholder={'enter github handle'}/>
         <button>Search</button>
       </form>
-      <div>
-        {/*this will be for the Follower.js FROM USER API*/}
-        <img src='https://avatars.githubusercontent.com/u/91036593?v=4'/>
-        <p>Name: {this.state.userName}</p>
-        <p>Bio: {this.state.userBio}</p>
-        <p>Total Repos: {this.state.userRepos}</p>
-        <p>Total Followers: {this.state.userFollowers}</p>
-      </div>
-      
-      <div>
-      {/*this will be for the FollowerList.js FROM FOLLOWER API*/}
-      <h3>Followers:</h3>
-      {
-        this.state.followerImages.map(image=> {
-          return <img width='150' src={image}/> 
-        })
-      }
-      </div>
+      <Follower state={this.state}/>
+      <FollowerList state={this.state}/>
 
     </div>
     );
