@@ -2,14 +2,13 @@ import React from 'react';
 
 class Follower extends React.Component {
     render() {
-      console.log('follower props', this.props)
         return (
             <div>
-            <img src='https://avatars.githubusercontent.com/u/91036593?v=4'/>
-            <p>Name: {this.props.state.userName}</p>
-            <p>Bio: {this.props.state.userBio}</p>
-            <p>Total Repos: {this.props.state.userRepos}</p>
-            <p>Total Followers: {this.props.state.userFollowers}</p>
+            <img src={this.props.userImage} alt='user image'/>
+            <p>Name: {this.props.userName}</p>
+            <p>Bio: {this.props.userBio}</p>
+            <p>Total Repos: {this.props.userRepos}</p>
+            <p>Total Followers: {this.props.userFollowers}</p>
           </div>
         )
     }

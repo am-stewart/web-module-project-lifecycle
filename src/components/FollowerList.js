@@ -6,7 +6,7 @@ class FollowerList extends React.Component {
             <div>
             <h3>Followers:</h3>
             {
-              this.props.state.followerImages.map(image=> {
+              this.props.followerImages.map(image=> {
                 return <img width='150' src={image}/> 
               })
             }
