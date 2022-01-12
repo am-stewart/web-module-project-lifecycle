@@ -3,6 +3,7 @@ import Follower from './Follower';
 
 class FollowerList extends React.Component {
     render() {
+      console.log(this.props, 'followerlist props')
         return (
             <div>
             <h3>Followers:</h3>

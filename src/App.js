@@ -13,7 +13,6 @@ class App extends React.Component {
   componentDidMount() {
     axios.get(`https://api.github.com/users/${this.state.currentUser}`)
     .then(resp => {
-      console.log(resp);
       this.setState({
         ...this.state,
         userData: {
@@ -28,13 +27,14 @@ class App extends React.Component {
   }
 
   componentDidUpdate(prevProps, prevState) {
-    if (prevState !== this.state) {
-    axios.get(`https://api.github.com/users/${this.state.currentUser}/followers}`)
+    if (prevState.userData !== this.state.userData) {
+    axios.get(`https://api.github.com/users/${this.state.currentUser}/followers`)
     .then(resp => {
+      console.log('update state', resp.data)
       this.setState({
         ...this.state,
         followers: resp.data
-      })
+      });
     })
     }
   }
@@ -50,7 +50,7 @@ class App extends React.Component {
     e.preventDefault();
     axios.get(`https://api.github.com/users/${this.state.currentUser}`)
     .then(resp => {
-      console.log(resp);
+      console.log(resp, 'handlesubmit');
       this.setState({
         ...this.state,
         userData: {
@@ -70,7 +70,7 @@ class App extends React.Component {
       <h1>Github Info</h1>
       <form>
         <input placeholder={'enter github handle'} onChange={this.handleChange}/>
-        <button>Search</button>
+        <button onClick={this.handleSubmit}>Search</button>
       </form>
       <User userData={this.state.userData}/>
       <FollowerList followers={this.state.followers}/>
