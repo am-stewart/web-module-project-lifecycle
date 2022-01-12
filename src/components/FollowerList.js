@@ -1,4 +1,5 @@
 import React from 'react';
+import Follower from './Follower';
 
 class FollowerList extends React.Component {
     render() {
@@ -6,10 +7,11 @@ class FollowerList extends React.Component {
             <div>
             <h3>Followers:</h3>
             {
-              this.props.followerImages.map(image=> {
-                return <img width='150' src={image}/> 
+              this.props.followers.map(item => {
+                return (<Follower key={item.id} item={item}/>)
               })
             }
+            
             </div>
         )
     }
