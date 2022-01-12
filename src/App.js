@@ -47,13 +47,7 @@ class App extends React.Component {
     .then(resp => {
       this.setState({
         ...this.state,
-        userData: {
-          userImage: resp.data.avatar_url,
-          userName: resp.data.name,
-          userHandle: resp.data.login,
-          userRepos: resp.data.public_repos,
-          userFollowers: resp.data.followers,
-        }
+        userData: resp.data
       })
       }).catch(err => console.log('error'))
   }
