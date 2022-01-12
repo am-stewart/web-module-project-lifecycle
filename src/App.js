@@ -13,15 +13,10 @@ class App extends React.Component {
   componentDidMount() {
     axios.get(`https://api.github.com/users/${this.state.currentUser}`)
     .then(resp => {
+      console.log(resp.data, 'app user api call resp')
       this.setState({
         ...this.state,
-        userData: {
-          userImage: resp.data.avatar_url,
-          userName: resp.data.name,
-          userHandle: resp.data.login,
-          userRepos: resp.data.public_repos,
-          userFollowers: resp.data.followers,
-        }
+        userData: resp.data
       })
       }).catch(err => console.log('error'))
   }
@@ -50,7 +45,6 @@ class App extends React.Component {
     e.preventDefault();
     axios.get(`https://api.github.com/users/${this.state.currentUser}`)
     .then(resp => {
-      console.log(resp, 'handlesubmit');
       this.setState({
         ...this.state,
         userData: {
@@ -69,7 +63,7 @@ class App extends React.Component {
     <div>
       <h1>Github Info</h1>
       <form>
-        <input placeholder={'enter github handle'} onChange={this.handleChange}/>
+        <input placeholder='enter github handle' onChange={this.handleChange}/>
         <button onClick={this.handleSubmit}>Search</button>
       </form>
       <User userData={this.state.userData}/>
